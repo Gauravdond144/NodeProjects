@@ -18,3 +18,4 @@ hostRouter.post("/addhome",(req,res)=>{
 });
 
 module.exports = {hostRouter :hostRouter};
+// akdjk
