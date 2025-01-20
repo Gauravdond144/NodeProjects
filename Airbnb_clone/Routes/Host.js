@@ -7,7 +7,10 @@ hostRouter.use(express.urlencoded({extended: true}));
 hostRouter.use(express.json());
 
 hostRouter.get("/",(req,res) => {  
-    res.render("hostHome",{pageTitle: "Home"});
+    const homes = home.find().then(homes => {
+        res.render("hostHome",{pageTitle: "Home","homes":homes});
+        })
+
 });
 
 hostRouter.get("/addhome", (req,res) => {
@@ -22,8 +25,6 @@ hostRouter.post("/addhome",(req,res)=>{
     }catch(error){
         console.log("Error in saving Home details :",error);
     }
-
-
     res.render("homeadded",{pageTitle : "Home added","Details" : req.body});
 });
 
